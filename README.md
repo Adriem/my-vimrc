@@ -28,6 +28,5 @@ official repo, but currently I think it's not that important.
 
 NOTE FOR WINDOWS USERS
 ----------------------
-You will need to run `:PluginInstall` for the plugins to be installed by Vundle
 If you use vim or gvim on Windows, you will probably have to rename this file
 to \_vimrc for it to work.
