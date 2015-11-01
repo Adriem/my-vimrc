@@ -11,7 +11,7 @@ plugins. This allows me to keep my plugin dependencies on this file, not having
 to keep my full .vim folder under version control. If you plan to use this file,
 you will have to install it before (good luck if you are on Windows :) ).
 
-####NOTE
+#####NOTE
 You will need to run `:PluginInstall` for the plugins to be installed by Vundle.
 
 ###Airline patched fonts
