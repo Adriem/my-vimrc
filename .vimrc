@@ -27,14 +27,15 @@ Plugin 'groenewege/vim-less'      " Less syntax plugin
 Plugin 'tpope/vim-fugitive'       " Git wrapper (needed for gitgutter & airline)
 Plugin 'airblade/vim-gitgutter'   " Display a git diff in the gutter
 Plugin 'bling/vim-airline'        " Enhanced status/tabline
+Plugin 'Adriem/nixium-colorscheme' " My custom colorscheme
 
 call vundle#end()          " required
 filetype plugin indent on  " required
 
 " AIRLINE PLUGIN                                                 AIRLINE PLUGIN
 " ==============================================================================
-let g:airline_theme='soft'
-set guifont=Consolas\ for\ Powerline\ FixedD:h10
+let g:airline_theme='soft'                        " Custom airline theme
+set guifont=Consolas\ for\ Powerline\ FixedD:h10  " Fixed font for airline
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
