@@ -20,11 +20,6 @@ use a patched font in order to see the symbols of this plugin. I am currently
 using [Consolas for powerline FixedD](https://github.com/eugeii/consolas-powerline-vim), so if you don't have it installed you should
 comment that line.
 
-I am also using a custom theme for airline, so you will probably have to comment
-out that line too (not sure if it breaks or not). Maybe I will fork airline and
-add my theme so vundle can handle it directly or will submit the theme to the
-official repo, but currently I think it's not that important.
-
 NOTE FOR WINDOWS USERS
 ----------------------
 If you use vim or gvim on Windows, you will probably have to rename this file
