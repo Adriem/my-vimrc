@@ -17,8 +17,7 @@ You will need to run `:PluginInstall` for the plugins to be installed by Vundle.
 ###Airline patched fonts
 Since I use [Airline Plugin](https://github.com/bling/vim-airline), I have to
 use a patched font in order to see the symbols of this plugin. I am currently
-using Consolas for poserline FixedD (sorry, don't remember where I got it...
-I'll update this with a link ASAP), so if you don't have it installed you should
+using [Consolas for powerline FixedD](https://github.com/eugeii/consolas-powerline-vim), so if you don't have it installed you should
 comment that line.
 
 I am also using a custom theme for airline, so you will probably have to comment
