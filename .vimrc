@@ -68,20 +68,27 @@ let g:airline_symbols.linenr = '⭡'
 " {{{2                                          Sub-Section: INDENT LINE PLUGIN
 " ------------------------------------------------------------------------------
 "let g:indentLine_char='|'
-let g:indentLine_color_term=238
-let g:indentLine_color_gui='#444444'
+let g:indentLine_color_term = 238
+let g:indentLine_color_gui  = '#444444'
 
 " {{{2                                         Sub-Section: DELIMIT MATE PLUGIN
 " ------------------------------------------------------------------------------
 set backspace=indent,eol,start
-let delimitMate_expand_cr=1
-let delimitMate_jump_expansion=1
-let delimitMate_expand_space=1
+let delimitMate_expand_cr = 1
+let delimitMate_jump_expansion = 1
+let delimitMate_expand_space = 1
+
+" {{{2                                             Sub-Section: NERDTREE PLUGIN
+" ------------------------------------------------------------------------------
+let NERDTreeDirArrows = 1
+let NERDTreeCascadeOpenSingleChildDir = 1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeMinimalUI = 1
+"let NERDTreeShowBookmarks = 1
 
 
 " {{{1                                                   Section: CUSTOMIZATION
 " ==============================================================================
-
 syntax on          " Enable syntax highlight
 colorscheme adriem-autumn
 let &colorcolumn=join(range(81,999),",") " Highlight columns beyond 80
@@ -107,6 +114,9 @@ com! RmTrail :s/\s*$//g  " Remove extra whitespaces at the end of the lines
 " {{{1                                                    Section: KEY MAPPINGS
 " ==============================================================================
 let mapleader=","
+" Add ; at the end of the line with <leader>;
+nmap <leader>; A;<ESC>
+vmap <leader>; :s/$/;/g<CR>
 " Indent w /TAB (CTRL + TAB on insert mode) and de-indent with SHIFT + TAB {{{2
 nmap <Tab> >>
 nmap <S-Tab> <<
@@ -132,8 +142,9 @@ imap <M-S-j> <ESC>:m+1<CR>gi
 " Toggle comment with ALT + c (depends on NERDCommenter) {{{2
 nmap <M-c> <Plug>NERDCommenterToggle
 imap <M-c> <ESC><Plug>NERDCommenterToggle<CR>
-vmap <M-c> <Plug>NERDCommenterToggle
-vmap <M-S-c> <Plug>NERDCommenterToggle gv
+vmap <M-c> <Plug>NERDCommenterToggle gv
+vmap <M-S-c>c <Plug>NERDCommenterToggle
+vmap <M-S-c>i <Plug>NERDCommenterInvert
 
 " FOLDING SHORTCUTS (most of them depend on indentwise plugin) {{{2
 " ------------------------------------------------------------------------------
