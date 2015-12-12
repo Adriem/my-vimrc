@@ -2,8 +2,8 @@ My .vimrc
 =========
 This is my .vimrc file, which contains my configuration and plugins for vim.
 
-Dependencies
-------------
+Setting it up
+--------------
 
 ###Vundle
 This file depends on [Vundle](https://github.com/VundleVim/Vundle.vim) to manage
@@ -17,8 +17,15 @@ You will need to run `:PluginInstall` for the plugins to be installed by Vundle.
 ###Airline patched fonts
 Since I use [Airline Plugin](https://github.com/bling/vim-airline), I have to
 use a patched font in order to see the symbols of this plugin. I am currently
-using [Consolas for powerline FixedD](https://github.com/eugeii/consolas-powerline-vim), so if you don't have it installed you should
-comment that line.
+using [Consolas for powerline FixedD](https://github.com/eugeii/consolas-powerline-vim),
+so if you don't have it installed you should comment that line.
+
+###Airline custom theme
+I use a custom theme I made for Airline. If you want to use it, you must copy
+`monowarm.vim` into `~/.vim/vim-airline/autoload/airline/themes`
+(`~/vimfiles/vim-airline/autoload/airline/themes` if you are on Windows).
+
+Otherwise, you must use a built in theme (I have already chosen one in .vimrc).
 
 NOTE FOR WINDOWS USERS
 ----------------------
