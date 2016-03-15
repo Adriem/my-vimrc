@@ -22,12 +22,12 @@
 " you get this wrong, Vim will complain loudly.
 let g:airline#themes#monowarm#palette = {}
 
-let s:N1   = [ '#1c1c1c' , '#ffaf5f' , 234 , 123 ]
-let s:N2   = [ '#af875f' , '#262626' , 234 , 73  ]
-let s:N3   = [ '#121212' , '#af875f' , 234 , 66  , 'NONE' ]
+let s:N1   = [ '#1c1c1c' , '#ffaf5f' , 234 , 215 ]
+let s:N2   = [ '#af875f' , '#262626' , 137 , 235  ]
+let s:N3   = [ '#121212' , '#af875f' , 233 , 137  , 'NONE' ]
 let g:airline#themes#monowarm#palette.normal = airline#themes#generate_color_map(s:N1, s:N2, s:N3)
 let g:airline#themes#monowarm#palette.normal_modified = {
-      \ 'airline_c': [ '#121212' , '#af875f' , 255     , 66      , 'bold'     ] ,
+      \ 'airline_c': [ '#121212' , '#af875f' , 233     , 137     , 'bold'     ] ,
       \ }
 
 " let s:I1 = [ '#1c1c1c' , '#00ffaf' , 234 , 49  ]
@@ -36,40 +36,40 @@ let g:airline#themes#monowarm#palette.normal_modified = {
 " let s:I1 = [ '#1c1c1c' , '#afd75f' , 234 , 49  ]
 " let s:I2 = [ '#87af5f' , '#262626' , 234 , 36  ]
 " let s:I3 = [ '#1c1c1c' , '#87af5f' , 234 , 29  , 'NONE' ]
-let s:I1 = [ '#1c1c1c' , '#afaf5f' , 234 , 49  ]
-let s:I2 = [ '#87875f' , '#262626' , 234 , 36  ]
-let s:I3 = [ '#1c1c1c' , '#87875f' , 234 , 29  , 'NONE' ]
+let s:I1 = [ '#1c1c1c' , '#afaf5f' , 234 , 143 ]
+let s:I2 = [ '#87875f' , '#262626' , 101 , 235 ]
+let s:I3 = [ '#121212' , '#87875f' , 233 , 101 , 'NONE' ]
 let g:airline#themes#monowarm#palette.insert = airline#themes#generate_color_map(s:I1, s:I2, s:I3)
 let g:airline#themes#monowarm#palette.insert_modified = {
-      \ 'airline_c': [ '#262626' , '#87875f' , 255     , 53      , 'bold'     ] ,
+      \ 'airline_c': [ '#262626' , '#87875f' , 235     , 101     , 'bold'     ] ,
       \ }
 let g:airline#themes#monowarm#palette.insert_paste = {
       \ 'airline_a': [ s:I1[0]   , '#d78700' , s:I1[2] , 172     , ''     ] ,
       \ }
 
-let s:R1 = [ '#1c1c1c' , '#ff5f5f' , 234 , 215 ]
-let s:R2 = [ '#af5f5f' , '#262626' , 234 , 208 ]
-let s:R3 = [ '#121212' , '#af5f5f' , 234 , 166 , 'NONE' ]
+let s:R1 = [ '#1c1c1c' , '#ff5f5f' , 234 , 203 ]
+let s:R2 = [ '#af5f5f' , '#262626' , 131 , 235 ]
+let s:R3 = [ '#121212' , '#af5f5f' , 233 , 131 , 'NONE' ]
 let g:airline#themes#monowarm#palette.replace = airline#themes#generate_color_map(s:R1, s:R2, s:R3)
 let g:airline#themes#monowarm#palette.replace_modified = {
-      \ 'airline_c': [ '#121212' , '#af5f5f' , 255     , 53      , 'bold'     ] ,
+      \ 'airline_c': [ '#121212' , '#af5f5f' , 233     , 131     , 'bold'     ] ,
       \ }
 
-let s:V1 = [ '#1c1c1c' , '#87afaf' , 234 , 74  ]
-let s:V2 = [ '#5f8787' , '#262626' , 234 , 32  ]
-let s:V3 = [ '#121212' , '#5f8787' , 234 , 25  , 'NONE' ]
+let s:V1 = [ '#1c1c1c' , '#87afaf' , 234 , 109 ]
+let s:V2 = [ '#5f8787' , '#262626' , 66  , 235 ]
+let s:V3 = [ '#121212' , '#5f8787' , 233 , 66  , 'NONE' ]
 let g:airline#themes#monowarm#palette.visual = airline#themes#generate_color_map(s:V1, s:V2, s:V3)
 let g:airline#themes#monowarm#palette.visual_modified = {
-      \ 'airline_c': [ '#121212' , '#5f8787' , 255     , 53      , 'bold'     ] ,
+      \ 'airline_c': [ '#121212' , '#5f8787' , 233     , 66      , 'bold'     ] ,
       \ }
 
 
-let s:IA1 = [ '#262626' , '#585858' , 236 , 239 , '' ]
-let s:IA2 = [ '#585858' , '#262626' , 236 , 240 , '' ]
-let s:IA3 = [ '#262626' , '#585858' , 236 , 241 , '' ]
+let s:IA1 = [ '#262626' , '#585858' , 235 , 240 , '' ]
+let s:IA2 = [ '#585858' , '#262626' , 240 , 235 , '' ]
+let s:IA3 = [ '#262626' , '#585858' , 235 , 240 , '' ]
 let g:airline#themes#monowarm#palette.inactive = airline#themes#generate_color_map(s:IA1, s:IA2, s:IA3)
  let g:airline#themes#monowarm#palette.inactive_modified = {
-      \ 'airline_c': [ '#262626' , '#585858' , 242 , '' , 'bold' ] ,
+      \ 'airline_c': [ '#262626' , '#585858' , 235 , 240 , 'bold' ] ,
       \ }
 
 
