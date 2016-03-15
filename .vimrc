@@ -1,9 +1,9 @@
 " ==============================================================================
-" File: .vimrc
-" Author: Adrian Moreno
-" Maintainer: Adrian Moreno (admoreno@outlook.com)
-" Repository: https://github.com/Adriem/my-vimrc
-" Version: 1.1
+"  File: .vimrc
+"  Author: Adrian Moreno
+"  Maintainer: Adrian Moreno (admoreno@outlook.com)
+"  Repository: https://github.com/Adriem/my-vimrc
+"  Version: 1.1
 " ==============================================================================
 
 set encoding=utf-8
@@ -14,6 +14,8 @@ endif
 
 " {{{1                                                         Section: PLUGINS
 " ==============================================================================
+
+" VUNDLE CONFIG {{{3
 set nocompatible  " be iMproved, required
 filetype off      " required
 " Required for Windows
@@ -25,20 +27,26 @@ else
   set rtp+=~/.vim/bundle/Vundle.vim/
   call vundle#begin('~/.vim')
 endif
+" }}}3
 
 Plugin 'VundleVim/Vundle.vim'     " let Vundle manage Vundle, required
-Plugin 'Raimondi/delimitMate'     " Auto-completion for quotes, parens, etc
-Plugin 'Yggdroot/indentLine'      " Display indentation levels
-Plugin 'Tabular'                  " Text auto-align
-Plugin 'scrooloose/NERDTree'      " Tree file explorer
-Plugin 'tpope/vim-fugitive'       " Git wrapper (needed for gitgutter & airline)
-Plugin 'airblade/vim-gitgutter'   " Display a git diff in the gutter
-Plugin 'bling/vim-airline'        " Enhanced status/tabline
-Plugin 'scrooloose/NERDCommenter' " Toggle comments
-Plugin 'jeetsukumaran/vim-indentwise' " Navigation through indentation levels
 
-Plugin 'vim-coffee-script'   " Coffeescript syntax plugin
-Plugin 'groenewege/vim-less' " Less syntax plugin
+Plugin 'Raimondi/delimitMate'         " Auto-completion for quotes, parens, etc
+Plugin 'Yggdroot/indentLine'          " Display indentation levels
+Plugin 'jeetsukumaran/vim-indentwise' " Navigation through indentation levels
+Plugin 'Tabular'                      " Text auto-align
+Plugin 'scrooloose/NERDCommenter'     " Toggle comments
+
+" Plugin 'mhinz/vim-startify'     " Custom welcome screen
+Plugin 'scrooloose/NERDTree'    " Tree file explorer
+Plugin 'tpope/vim-fugitive'     " Git wrapper (needed for gitgutter & airline)
+Plugin 'airblade/vim-gitgutter' " Display a git diff in the gutter
+Plugin 'bling/vim-airline'      " Enhanced status/tabline
+
+Plugin 'vim-coffee-script'       " Coffeescript syntax plugin
+Plugin 'pangloss/vim-javascript' " Javascript syntax plugin
+Plugin 'groenewege/vim-less'     " Less syntax plugin
+Plugin 'tfnico/vim-gradle'       " Gradle integration plugin
 
 Plugin 'Adriem/vim-colorschemes' " Custom colorscheme
 
@@ -47,34 +55,71 @@ filetype plugin indent on  " required
 
 " {{{2                                              Sub-Section: AIRLINE PLUGIN
 " ------------------------------------------------------------------------------
-" let g:airline_theme='bubblegum' " Fallback theme
-let g:airline_theme='monowarm'  " Custom theme
-set guifont=Consolas\ for\ Powerline\ FixedD:h10  " Fixed font for airline
+let g:airline_theme='adriem_amber'  " Custom theme
+" set guifont=Consolas\ for\ Powerline\ FixedD:h11  " Fixed font for airline
 " let g:airline#extensions#tabline#enabled = 1
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-let g:airline_left_sep = '⮀'
-let g:airline_left_alt_sep = '⮁'
-let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
-let g:airline_symbols.branch = '⭠'
-" let g:airline_symbols.readonly = '⭤'  " Don't like this one :P
+
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.branch = '§'  " A random symbol 'cuz YOLO
 let g:airline_symbols.readonly = '[RO]'
-let g:airline_symbols.linenr = '⭡'
+let g:airline_symbols.linenr = ''
 let g:airline#extensions#default#layout = [
-        \ [ 'a', 'c'],
-        \ [ 'b', 'z', 'warning' ]
+        \ [ 'c' ],
+        \ [ 'y', 'z', 'warning', 'error']
         \ ]
-let g:airline_section_z = '%#__accent_bold#%3v, %2l/%L [%2p%%]%#__restore__#'
+        " \ [ 'b', 'c'],
+let g:airline#extensions#default#section_truncate_width = {
+        \ 'x': 45,
+        \ 'warning': 45,
+        \ 'error': 45,
+        \ }
+        " \ 'z': 60,
+
+" let g:airline_section_a = '%#__accent_bold#%{airline#util#wrap(airline#parts#mode(),0)}%#__restore__#%{airline#util#append(airline#parts#crypt(),0)}%{airline#util#append(airline#parts#paste(),0)}%{airline#util#append("",0)}%{airline#util#append(airline#parts#iminsert(),0)}'
+" let g:airline_section_b = '%{airline#util#wrap(airline#extensions#hunks#get_hunks(),0)}%{airline#util#wrap(airline#extensions#branch#get_head(),0)}'
+" let g:airline_section_c = '%<%f%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
+" let g:airline_section_x = '%{airline#util#wrap(airline#parts#filetype(),0)}'
+" let g:airline_section_y = '%{airline#util#wrap(airline#parts#ffenc(),0)}'
+" let g:airline_section_z = '%#__accent_bold#%3v, %2l/%L [%2p%%]%#__restore__#'
+" let g:airline_section_z = '%3v, %2l/%L [%2p%%]'
+" let g:airline_section_c = '%#__accent_bold#%<%#__restore__# %f%m %#__accent_red#%{airline#util#wrap(airline#parts#readonly(),0)}%#__restore__#'
+
+let g:airline_section_y =
+    \' %{airline#util#wrap(airline#extensions#hunks#get_hunks(),45)}' .
+    \'%{airline#util#wrap(GetBranch(),70)}' .
+    \'%2v:%-2l '
+let g:airline_section_z =
+    \'%#__accent_bold#%{airline#util#wrap(airline#parts#mode(),60)}%#__restore__#' .
+    \'%{airline#util#append(airline#parts#crypt(),0)}' .
+    \'%{airline#util#append(airline#parts#paste(),0)}' .
+    \'%{airline#util#append("",0)}' .
+    \'%{airline#util#append(airline#parts#iminsert(),0)}'
+
 let g:airline#extensions#hunks#enabled = 1
 let g:airline#extensions#hunks#non_zero_only = 1
 
+function! GetBranch()
+    let head = airline#extensions#branch#get_head()
+    return empty(head) ? '' : ''.head.' '
+endfunction
+
 " {{{2                                          Sub-Section: INDENT LINE PLUGIN
 " ------------------------------------------------------------------------------
-"let g:indentLine_char='|'
+let g:indentLine_char='│'
+" let g:indentLine_char='|'
+" let g:indentLine_char='╎'
+" let g:indentLine_char='¦'
+" let g:indentLine_char='┆'
+" let g:indentLine_char='┊'
 let g:indentLine_color_term = 238
-let g:indentLine_color_gui  = '#444444'
+let g:indentLine_color_gui  = '#3a3a3a'
 
 " {{{2                                         Sub-Section: DELIMIT MATE PLUGIN
 " ------------------------------------------------------------------------------
@@ -95,30 +140,47 @@ let NERDTreeMinimalUI = 1
 " ------------------------------------------------------------------------------
 let NERDSpaceDelims = 1
 
+" {{{2                                                   Sub-Section: GITGUTTER
+" ------------------------------------------------------------------------------
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+
 
 " {{{1                                                   Section: CUSTOMIZATION
 " ==============================================================================
 syntax on          " Enable syntax highlight
-colorscheme adriem-autumn
-let &colorcolumn=join(range(81,999),",") " Highlight columns beyond 80
-" set guifont=Consolas:h10
+colorscheme adriem-amber
+set guifont=Consolas:h11
+set linespace=2
 
 set laststatus=2   " Always show status line
 set ruler          " Show position of the cursor in status bar
 set number         " Show number lines
+set nuw=6
+" set fillchars+=vert:│
 set cursorline     " Highlight cursor line
-set guioptions-=T  " Hide toolbar in graphic mode
+set guioptions-=m  " Remove menu bar
+set guioptions-=T  " Remove toolbar
+set guioptions-=r  " Remove right-hand scroll bar
+set guioptions-=L  " Remove left-hand scroll bar toolbar in graphic mode
 
 set tabstop=4 shiftwidth=4 expandtab " Use spaces when tab is pressed
 autocmd Filetype coffee setlocal ts=2 sw=2 expandtab
+
+" Highlight characters beyond column 80
+highlight OverLength ctermbg=red ctermfg=white guibg=#3a3a3a
+match OverLength /\%81v.\+/
+" let &colorcolumn=join(range(81,999),",") " Highlight columns beyond 80
+
 
 " {{{2                                        Sub-Section: COMMANDS AND ALIASES
 " ------------------------------------------------------------------------------
 com! W wa | Run  " This command needs a command Run to be defined. Since Run
                  " command may vary depending on the project, it is not defined
                  " by default
-com! RmTrail  %s/\s*$//g      " Remove extra whitespaces at the end of the line
-com! FileInfo call FileInfo() " Get some useful info about the file
+com! RmTrail  %s/\s\+$//g  " Remove extra whitespaces at the end of the line
+com! Info call FileInfo()  " Get some useful info about the file
+com! -nargs=1 Vres vertical resize <args> " Shortcut for vertical resize
 
 " {{{2                                                   Sub-Section: FUNCTIONS
 " ------------------------------------------------------------------------------
@@ -164,14 +226,6 @@ imap <C-Tab> <C-t>
 imap <S-Tab> <C-d>
 vmap <Tab> >gv
 vmap <S-Tab> <gv
-" Save with CTRL + s on every mode {{{2
-nmap <C-s> :w<CR>
-imap <C-s> <ESC>:w<CR>a
-vmap <C-s> <ESC>:w<CR>gv
-" Undo with CTRL + z on every mode {{{2
-nmap <C-z> u
-imap <C-z> <ESC>ui
-vmap <C-z> <ESC>u
 " Move lines up and down with ALT + SHIFT + h/j on every mode {{{2
 nmap <M-S-k> :m-2<CR>
 nmap <M-S-j> :m+1<CR>
@@ -205,6 +259,10 @@ vmap <leader>z<space> zA
 nmap <M-f> za
 " Toggle fold the next fold (useful when on a function declaration)
 nmap <M-S-f> zjzak
+
+
+
+
 
 
 " Configure folding for this file {{{1
